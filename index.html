@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f15a24" />
+    <title>Pollada CA.FIN.AC · Guía operativa</title>
+    <style>
+      :root {
+        --ink: #18231b;
+        --paper: #fffaf0;
+        --cream: #fff0c9;
+        --orange: #ef642d;
+        --orange-dark: #ba3f18;
+        --green: #3f6b43;
+        --lime: #b9d44a;
+        --line: #e8d8b8;
+        --shadow: 0 15px 35px rgba(72, 50, 20, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 1%, #ffd875 0 4%, transparent 20%),
+          radial-gradient(circle at 90% 9%, #b9d44a 0 3%, transparent 18%),
+          var(--paper);
+        font-family: ui-rounded, "Avenir Next", Avenir, "Trebuchet MS", system-ui, sans-serif;
+        line-height: 1.45;
+      }
+
+      .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+      .hero { padding: 42px 0 25px; }
+      .hero-card {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 34px;
+        align-items: center;
+        padding: clamp(24px, 4vw, 48px);
+        color: #fffdf4;
+        background: var(--ink);
+        border: 4px solid var(--ink);
+        border-radius: 32px;
+        box-shadow: var(--shadow);
+      }
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        width: 370px;
+        height: 370px;
+        right: -175px;
+        top: -180px;
+        border: 34px solid var(--orange);
+        border-radius: 50%;
+        opacity: .9;
+      }
+      .logo {
+        position: relative;
+        z-index: 1;
+        width: 180px;
+        padding: 8px;
+        background: #fffdf4;
+        border-radius: 24px;
+        transform: rotate(-3deg);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--lime);
+        font-size: .86rem;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { max-width: 700px; margin-bottom: 12px; font-size: clamp(2.3rem, 6vw, 4.8rem); line-height: .94; letter-spacing: -.06em; }
+      .hero-copy { position: relative; z-index: 1; max-width: 700px; margin: 0; font-size: clamp(1rem, 2vw, 1.2rem); }
+      .nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 18px 0 6px; }
+      .nav a { padding: 8px 13px; color: var(--ink); font-size: .9rem; font-weight: 800; text-decoration: none; background: #fffdf4; border: 1px solid var(--line); border-radius: 999px; }
+      .nav a:hover { color: #fff; background: var(--green); border-color: var(--green); }
+
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 24px 0 42px; }
+      .stat { padding: 19px; background: #fffdf4; border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 6px 16px rgba(72, 50, 20, .06); }
+      .stat b { display: block; color: var(--orange-dark); font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1; }
+      .stat span { display: block; margin-top: 7px; font-size: .88rem; font-weight: 700; }
+
+      section { margin: 0 0 48px; scroll-margin-top: 20px; }
+      .section-heading { display: flex; align-items: end; gap: 16px; margin-bottom: 18px; }
+      .section-heading h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.35rem); letter-spacing: -.04em; }
+      .section-heading p { margin: 0 0 3px; color: #5f685f; }
+      .callout { padding: 19px 22px; color: #fff; background: var(--green); border-radius: 18px; }
+      .callout strong { color: var(--cream); }
+
+      .checklist { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .check { min-height: 122px; padding: 18px; background: var(--cream); border-radius: 18px; }
+      .check i { display: grid; place-items: center; width: 30px; height: 30px; margin-bottom: 12px; color: #fff; font-style: normal; font-weight: 900; background: var(--orange); border-radius: 50%; }
+      .check b { display: block; font-size: .96rem; }
+
+      .roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .role { padding: 22px; background: #fffdf4; border: 1px solid var(--line); border-radius: 20px; }
+      .role h3 { display: inline-block; margin-bottom: 8px; padding: 4px 10px; color: #fff; font-size: .83rem; background: var(--orange); border-radius: 999px; }
+      .role .people { margin-bottom: 11px; color: var(--green); font-size: .94rem; font-weight: 800; }
+      .role p { margin: 0; font-size: .94rem; }
+
+      .timeline { position: relative; display: grid; gap: 12px; padding-left: 29px; }
+      .timeline::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 3px; background: var(--lime); }
+      .slot { position: relative; display: grid; grid-template-columns: 142px 1fr; gap: 15px; padding: 17px 20px; background: #fffdf4; border: 1px solid var(--line); border-radius: 17px; }
+      .slot::before { content: ""; position: absolute; left: -27px; top: 23px; width: 14px; height: 14px; background: var(--orange); border: 4px solid var(--paper); border-radius: 50%; }
+      .time { color: var(--orange-dark); font-weight: 900; }
+      .slot h3 { margin: 0 0 4px; font-size: 1rem; }
+      .slot p { margin: 0; font-size: .94rem; }
+
+      .grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .panel { padding: 24px; background: #fffdf4; border: 1px solid var(--line); border-radius: 20px; }
+      .panel h3 { margin-bottom: 13px; font-size: 1.25rem; }
+      .panel ul { padding-left: 20px; margin: 0; }
+      .panel li { margin: 0 0 10px; }
+      .panel li:last-child { margin-bottom: 0; }
+      .purchase-list b { color: var(--orange-dark); }
+
+      .money { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+      .account { padding: 30px; color: #fffdf4; background: var(--green); border-radius: 22px; }
+      .account h2 { margin-bottom: 17px; font-size: 1.9rem; }
+      .alias { display: inline-block; padding: 9px 14px; margin: 2px 0 10px; color: var(--ink); font-size: 1.4rem; font-weight: 900; letter-spacing: .05em; background: var(--lime); border-radius: 9px; }
+      .account p { margin-bottom: 0; }
+      .balance { padding: 28px; background: var(--orange); border-radius: 22px; }
+      .balance small { display: block; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+      .balance b { display: block; font-size: clamp(2rem, 5vw, 3.3rem); line-height: 1; letter-spacing: -.06em; }
+      .balance p { margin: 11px 0 0; font-weight: 700; }
+      footer { padding: 18px 0 40px; color: #5f685f; font-size: .88rem; text-align: center; }
+
+      @media (max-width: 760px) {
+        .hero-card { grid-template-columns: 1fr; gap: 22px; border-radius: 25px; }
+        .logo { width: 125px; }
+        .stats, .checklist { grid-template-columns: repeat(2, 1fr); }
+        .roles, .grid-two, .money { grid-template-columns: 1fr; }
+        .slot { grid-template-columns: 1fr; gap: 5px; }
+      }
+      @media (max-width: 420px) { .stats, .checklist { grid-template-columns: 1fr; } }
+      @media print {
+        body { background: #fff; }
+        .hero { padding-top: 10px; }
+        .nav { display: none; }
+        .hero-card, .role, .slot, .panel, .stat { box-shadow: none; }
+        section { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <div class="hero-card">
+          <img class="logo" src="./assets/pollos%406xX.png" alt="Logo MAUX Pollos al Carbón" />
+          <div>
+            <p class="eyebrow">Sábado 12 de septiembre · sede del Grupo</p>
+            <h1>Pollada<br />CA.FIN.AC</h1>
+            <p class="hero-copy">La guía para que la jornada salga riquísima, ordenada y con todo el equipo en la misma página. ¡Vamos por esos pollos! 🔥</p>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Secciones de la guía">
+          <a href="#roles">Equipos</a><a href="#cronograma">Cronograma</a><a href="#materiales">Materiales</a><a href="#cobranza">Cobranza</a>
+        </nav>
+      </header>
+
+      <div class="stats" aria-label="Datos principales">
+        <div class="stat"><b>187</b><span>pollos a elaborar</span></div>
+        <div class="stat"><b>27</b><span>cajones de Granja Luciani</span></div>
+        <div class="stat"><b>$23.000</b><span>por combo con ensalada</span></div>
+        <div class="stat"><b>18:30–21:00</b><span>horario de retiro</span></div>
+      </div>
+
+      <section>
+        <div class="section-heading"><h2>Antes de empezar</h2><p>Todo educador trae su kit de batalla.</p></div>
+        <div class="checklist">
+          <div class="check"><i>1</i><b>Tabla o plato</b>para apoyar y picar.</div>
+          <div class="check"><i>2</i><b>Cuchillo afilado</b>listo para trabajar cómodo.</div>
+          <div class="check"><i>3</i><b>Pinza de cocina</b>o pinza parrillera.</div>
+          <div class="check"><i>4</i><b>Repasadores limpios</b>para toda la jornada.</div>
+        </div>
+      </section>
+
+      <section id="roles">
+        <div class="section-heading"><h2>Equipos en acción</h2><p>Cada posta tiene una misión clave.</p></div>
+        <div class="roles">
+          <article class="role"><h3>Limpieza y condimentado</h3><div class="people">Todo el equipo</div><p>Corte, apertura, retiro de menudos/grasa y salado/adobo en tablones. Cada pollo vuelve ordenado a su cajón de origen.</p></article>
+          <article class="role"><h3>Fuego y parrillas</h3><div class="people">Pablas · Juli · Santi Testa · Juan · Maxi · Saya</div><p>Encendido y distribución de brasas en las 7 parrillas; colocación uniforme y control de tiempos y puntos de cocción.</p></article>
+          <article class="role"><h3>Ensaladas</h3><div class="people">Viqui · Silvi · Eri · Joaco · China · Celes · Naza · Sol</div><p>Lavado, sanitizado, secado y picado de 25 kg de lechuga y 2 cajones de tomate. Armado y filmado de bandejas.</p></article>
+          <article class="role"><h3>Packaging y armado</h3><div class="people">Rovers</div><p>Plegado de cajas térmicas, nylon aislante, stickers de agradecimiento, empaquetado del pollo y ensalada correspondiente.</p></article>
+          <article class="role"><h3>Tesorería y acreditación</h3><div class="people">Julieta y Cele</div><p>Planillas impresas por rama, validación de transferencias y cobro de saldos pendientes de $11.500 / $12.000.</p></article>
+          <article class="role"><h3>Despacho y entrega</h3><div class="people">Julieta y Cele</div><p>Con el comprobante tildado por Tesorería, reciben al comprador y entregan el pedido final en mano.</p></article>
+        </div>
+      </section>
+
+      <section>
+        <div class="callout"><strong>Novedades de asistencia:</strong> Marki llega desde las 12:00; Sol se retira a las 15:00 y regresa luego; Viqui colabora por la mañana y se retira por la tarde; Zaca está ausente.</div>
+      </section>
+
+      <section id="cronograma">
+        <div class="section-heading"><h2>Cronograma del sábado</h2><p>El ritmo de la pollada, paso a paso.</p></div>
+        <div class="timeline">
+          <article class="slot"><div class="time">10:00</div><div><h3>Llega el equipo base</h3><p>Apertura de sede y recepción de los 27 cajones. Acopio en sombra, resguardados dentro de sus cajones.</p></div></article>
+          <article class="slot"><div class="time">11:00–11:30</div><div><h3>Convocatoria general</h3><p>Arribo de educadores y presentación en cartulina de áreas y circuitos de trabajo.</p></div></article>
+          <article class="slot"><div class="time">11:30–12:45</div><div><h3>Limpieza y apertura</h3><p>Explicación técnica según el video enviado; todo el equipo limpia y condimenta. Dos parrilleros encienden los fuegos en paralelo.</p></div></article>
+          <article class="slot"><div class="time">13:00</div><div><h3>Pollos a la parrilla + almuerzo</h3><p>Se acomodan los pollos en las 7 parrillas. El equipo almuerza comida fría individual.</p></div></article>
+          <article class="slot"><div class="time">14:00–17:30</div><div><h3>Producción de tarde</h3><p>Brasas y parrilla en control constante; ensaladas, cajas y rotulado; mesa de cobranzas con alias y planillas listas.</p></div></article>
+          <article class="slot"><div class="time">16:00</div><div><h3>Bajada y empaquetado</h3><p>Pollo caliente a caja térmica con separador de nylon, emparejado con su ensalada.</p></div></article>
+          <article class="slot"><div class="time">16:30</div><div><h3>Limpieza intermedia</h3><p>Patio, bandejas y tablones; apagado seguro de cenizas y descarte de residuos.</p></div></article>
+          <article class="slot"><div class="time">18:30–21:00</div><div><h3>Despacho al público</h3><p>1. Tesorería ubica el pedido y confirma pago/saldo. 2. Con el visto bueno, Despacho entrega.</p></div></article>
+          <article class="slot"><div class="time">21:00 en adelante</div><div><h3>Cierre final</h3><p>Limpieza integral, apagado de cenizas, residuos y balance final de caja.</p></div></article>
+        </div>
+      </section>
+
+      <section id="materiales">
+        <div class="section-heading"><h2>Materiales y compras</h2><p>Que no falte nada en ninguna posta.</p></div>
+        <div class="grid-two">
+          <article class="panel"><h3>🔥 Parrillas y fuego</h3><ul><li>7 parrillas: 3 de Bomberos (retiro viernes 11/9, 18:30), 2 del Grupo y 2 de Bruno.</li><li>2 palas del Grupo y al menos 1 atizador por parrilla.</li><li>Carbón y maderas de encendido.</li></ul></article>
+          <article class="panel"><h3>🍅 Mobiliario y cocina</h3><ul><li>6 tablones para mesada.</li><li>3 balanzas.</li><li>Bandejas plásticas profundas: 6/7 del Grupo + extras de Eri y Silvi.</li></ul></article>
+          <article class="panel purchase-list"><h3>🛒 Compras asignadas</h3><ul><li><b>Pablas:</b> cajas de cartón, condimentos, stickers/sello “Gracias por su compra”, lavandina y detergente.</li><li><b>Cele:</b> nylon, bandejas, bolsas reforzadas, 2 rollos de tissue y guantes.</li><li><b>Juli:</b> limones.</li></ul></article>
+          <article class="panel"><h3>📋 Planillas de venta</h3><ul><li>Manada: 63</li><li>UP: 49</li><li>CCC: 43</li><li>Rovers: 28</li><li>Con vendedor, retiro y registro de seña/pago total.</li></ul></article>
+        </div>
+      </section>
+
+      <section id="cobranza">
+        <div class="section-heading"><h2>Cobranza y cuentas</h2><p>Datos para que el retiro sea ágil.</p></div>
+        <div class="money">
+          <article class="account"><h2>Alias de transferencia</h2><div class="alias">polladamaux</div><p><strong>Titular:</strong> Natalia Mariel Arevalo</p><p>En Tesorería se valida la transferencia o se cobra el saldo pendiente antes de entregar el pedido.</p></article>
+          <article class="balance"><small>Recaudación neta estimada</small><b>$2.318.495</b><p>Ingresos proyectados: $4.301.000<br />Gastos registrados: $1.982.505 <small>(incluye $144.000 de carbón)</small></p></article>
+        </div>
+      </section>
+    </main>
+    <footer>CA.FIN.AC · Pollada 2026 · Hecho con mucho fuego, organización y cariño 🐔</footer>
+  </body>
+</html>
